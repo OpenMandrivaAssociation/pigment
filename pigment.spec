@@ -84,6 +84,10 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post -n %{libname} -p /sbin/ldconfig
+
+%postun -n %{libname} -p /sbin/ldconfig
+
 %files
 %defattr(-,root,root)
 %dir %_libdir/%{name}-0.1
