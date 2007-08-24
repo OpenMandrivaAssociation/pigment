@@ -1,19 +1,32 @@
 %define name pigment
-%define version 0.1.5
+%define version 0.3.1
+%define	fversion 0.3
+%define svn 0
+%if %svn
+%define release %mkrel 0.%svn.1
+%else
 %define release %mkrel 1
-%define major 0
+%endif
+%define major 1
 %define libname %mklibname %name %major
+%define develname %mklibname %name -d
 
 Summary: Python user interface library with embedded multimedia
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: http://elisa.fluendo.com/static/download/pigment/%{name}-%{version}.tar.bz2
-License: GPL
+%if %svn
+Source0: %{name}-%{svn}.tar.bz2
+%else
+Source0: http://elisa.fluendo.com/static/download/pigment/%{name}-%{version}.tar.gz
+%endif
+License: LGPLv2+
 Group: Development/Python
 Url: https://core.fluendo.com/pigment/trac
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: automake
+%if %svn
+BuildRequires: autoconf
+%endif
 BuildRequires: libx11-devel
 BuildRequires: libxrandr-devel
 BuildRequires: gtk-doc
@@ -21,7 +34,6 @@ BuildRequires: libgstreamer0.10-devel
 BuildRequires: libgstreamer0.10-plugins-base-devel
 BuildRequires: gstreamer0.10-python
 BuildRequires: glib2-devel
-BuildRequires: gdk-pixbuf-devel
 BuildRequires: cairo-devel
 BuildRequires: mesaglu-devel
 BuildRequires: python-devel
@@ -57,13 +69,14 @@ platforms, thanks to a plugin system allowing to choose the underlying
 graphical API. Pigment is the rendering engine of Elisa, the Fluendo 
 Media Center project.
 
-%package -n %libname-devel
+%package -n %develname
 Group: Development/C
 Summary: Development headers for shared library of Pigment
 Requires: %libname = %version
-Provides: lib%name-devel = %version-%release
+Provides: %name-devel = %version-%release
+Obsoletes: %{_lib}pigment0-devel
 
-%description -n %libname-devel
+%description -n %develname
 Pigment is a Python library designed to easily build user interfaces 
 with embedded multimedia. Its design allows to use it on several 
 platforms, thanks to a plugin system allowing to choose the underlying 
@@ -71,11 +84,18 @@ graphical API. Pigment is the rendering engine of Elisa, the Fluendo
 Media Center project.
 
 %prep
+%if %svn
+%setup -q -n %name
+%else
 %setup -q
+%endif
 
 %build
+%if %svn
+./autogen.sh
+%endif
 %configure
-%make
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -90,17 +110,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%dir %_libdir/%{name}-0.1
-%dir %_libdir/%{name}-0.1/gstreamer
-%_libdir/%{name}-0.1/*.so
-%_libdir/%{name}-0.1/gstreamer/*.so
+%dir %_libdir/%{name}-%{fversion}
+%dir %_libdir/%{name}-%{fversion}/gstreamer
+%_libdir/%{name}-%{fversion}/*.so
+%_libdir/%{name}-%{fversion}/gstreamer/*.so
 %py_puresitedir/pgm
+%py_puresitedir/pypgmtools
 %py_platsitedir/*.so
 
 %files devel
 %defattr(-,root,root)
-%_libdir/%{name}-0.1/*.la
-%_libdir/%{name}-0.1/gstreamer/*.la
+%_libdir/%{name}-%{fversion}/*.la
+%_libdir/%{name}-%{fversion}/gstreamer/*.la
 %_includedir/*
 %py_platsitedir/*.la
 
@@ -108,9 +129,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %_libdir/lib*.so.%{major}*
 
-%files -n %libname-devel
+%files -n %develname
 %defattr(-,root,root)
 %_libdir/lib*.so
 %attr(644,root,root) %_libdir/lib*a
-%_libdir/pkgconfig/%{name}-render-0.1.pc
-%_datadir/gtk-doc/html/pigment-render
+%_libdir/pkgconfig/%{name}-%{fversion}.pc
+
