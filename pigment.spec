@@ -1,5 +1,5 @@
 %define name pigment
-%define version 0.3.1
+%define version 0.3.2
 %define	fversion 0.3
 %define svn 0
 %if %svn
@@ -18,7 +18,7 @@ Release: %{release}
 %if %svn
 Source0: %{name}-%{svn}.tar.bz2
 %else
-Source0: http://elisa.fluendo.com/static/download/pigment/%{name}-%{version}.tar.gz
+Source0: http://elisa.fluendo.com/static/download/pigment/%{name}-%{version}.tar.bz2
 %endif
 License: LGPLv2+
 Group: Development/Python
@@ -117,6 +117,8 @@ rm -rf $RPM_BUILD_ROOT
 %py_puresitedir/pgm
 %py_puresitedir/pypgmtools
 %py_platsitedir/*.so
+%dir %{_datadir}/gtk-doc/html/%{name}
+%{_datadir}/gtk-doc/html/%{name}*
 
 %files devel
 %defattr(-,root,root)
