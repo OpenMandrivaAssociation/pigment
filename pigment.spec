@@ -23,6 +23,7 @@ Source0: http://elisa.fluendo.com/static/download/pigment/%{name}-%{version}.tar
 License: LGPLv2+
 Group: Development/Python
 Url: https://core.fluendo.com/pigment/trac
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 %if %svn
 BuildRequires: autoconf
 %endif
