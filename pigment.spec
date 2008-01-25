@@ -4,7 +4,7 @@
 %if %svn
 %define release	%mkrel 0.%svn.1
 %else
-%define release	%mkrel 1
+%define release	%mkrel 2
 %endif
 
 %define major		3
@@ -33,6 +33,7 @@ BuildRequires:	libxrandr-devel
 BuildRequires:	gtk-doc
 BuildRequires:	libgstreamer0.10-devel
 BuildRequires:	libgstreamer0.10-plugins-base-devel
+BuildRequires:	gtk+2-devel
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	glib2-devel
 BuildRequires:	cairo-devel
