@@ -1,5 +1,3 @@
-%define name		pigment
-%define version		0.3.4
 %define	fversion	0.3
 
 %define svn	0
@@ -14,8 +12,8 @@
 %define develname	%mklibname %name -d
 
 Summary:	User interface library with embedded multimedia
-Name:		%{name}
-Version:	%{version}
+Name:		pigment
+Version:	0.3.4
 Release:	%{release}
 %if %svn
 Source0:	%{name}-%{svn}.tar.bz2
@@ -38,6 +36,7 @@ BuildRequires:	libgstreamer0.10-plugins-base-devel
 BuildRequires:	libgdk_pixbuf2.0-devel
 BuildRequires:	glib2-devel
 BuildRequires:	cairo-devel
+BuildRequires:	pango-devel
 BuildRequires:	mesaglu-devel
 
 %description
