@@ -35,7 +35,7 @@ BuildRequires:	libxrandr-devel
 BuildRequires:	gtk-doc
 BuildRequires:	libgstreamer0.10-devel
 BuildRequires:	libgstreamer0.10-plugins-base-devel
-BuildRequires:	gstreamer0.10-python
+BuildRequires:	gdk-pixbuf-devel
 BuildRequires:	glib2-devel
 BuildRequires:	cairo-devel
 BuildRequires:	mesaglu-devel
