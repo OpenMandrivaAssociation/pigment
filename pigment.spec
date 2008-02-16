@@ -1,6 +1,6 @@
 %define	fversion	0.3
 
-%define svn	0
+%define svn	1073
 %if %svn
 %define release	%mkrel 0.%svn.1
 %else
@@ -13,14 +13,13 @@
 
 Summary:	User interface library with embedded multimedia
 Name:		pigment
-Version:	0.3.4
+Version:	0.3.4.1
 Release:	%{release}
 %if %svn
-Source0:	%{name}-%{svn}.tar.bz2
+Source0:	%{name}-%{svn}.tar.lzma
 %else
 Source0:	http://elisa.fluendo.com/static/download/pigment/%{name}-%{version}.tar.gz
 %endif
-Patch0:		pigment-0.3.1-visual.patch
 License:	LGPLv2+
 Group:		Development/C
 URL:		http://elisa.fluendo.com/
@@ -90,7 +89,6 @@ Media Center project.
 %else
 %setup -q
 %endif
-%patch0 -p0 -b .visual
 
 %build
 %if %svn
