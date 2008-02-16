@@ -94,7 +94,7 @@ Media Center project.
 %if %svn
 ./autogen.sh
 %endif
-%configure2_5x
+%configure2_5x --enable-gtk-doc
 make
 
 %install
