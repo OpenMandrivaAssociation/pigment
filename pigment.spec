@@ -1,6 +1,6 @@
 %define	fversion	0.3
 
-%define svn	1089
+%define svn	0
 %if %svn
 %define release	%mkrel 0.%svn.1
 %else
@@ -13,7 +13,7 @@
 
 Summary:	User interface library with embedded multimedia
 Name:		pigment
-Version:	0.3.4.1
+Version:	0.3.4.2
 Release:	%{release}
 %if %svn
 Source0:	%{name}-%{svn}.tar.lzma
