@@ -13,7 +13,7 @@
 
 Summary:	User interface library with embedded multimedia
 Name:		pigment
-Version:	0.3.4.2
+Version:	0.3.4.3
 Release:	%{release}
 %if %svn
 Source0:	%{name}-%{svn}.tar.lzma
