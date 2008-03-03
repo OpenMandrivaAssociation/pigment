@@ -7,13 +7,13 @@
 %define release	%mkrel 1
 %endif
 
-%define major		3
+%define major		4
 %define libname		%mklibname %name %major
 %define develname	%mklibname %name -d
 
 Summary:	User interface library with embedded multimedia
 Name:		pigment
-Version:	0.3.4.3
+Version:	0.3.5
 Release:	%{release}
 %if %svn
 Source0:	%{name}-%{svn}.tar.lzma
