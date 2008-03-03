@@ -30,7 +30,7 @@ BuildRequires:	autoconf
 BuildRequires:	libx11-devel
 BuildRequires:	libxrandr-devel
 BuildRequires:	gtk-doc
-BuildRequires:	gstreamer0.10-devel
+BuildRequires:	libgstreamer0.10-devel
 BuildRequires:	libgstreamer0.10-plugins-base-devel
 BuildRequires:	gtk+2-devel
 BuildRequires:	libgdk_pixbuf2.0-devel
