@@ -1,10 +1,11 @@
 %define	fversion	0.3
 
 %define svn	0
+%define rel	2
 %if %svn
-%define release	%mkrel 0.%svn.1
+%define release	%mkrel 0.%svn.%rel
 %else
-%define release	%mkrel 1
+%define release	%mkrel %rel
 %endif
 
 %define major		4
@@ -93,6 +94,9 @@ Media Center project.
 %build
 %if %svn
 ./autogen.sh
+%else
+# (Anssi 03/2008) drop rpath on x86_64
+autoreconf
 %endif
 %configure2_5x --enable-gtk-doc
 make
