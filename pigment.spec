@@ -1,33 +1,33 @@
 %define	fversion	0.3
 
 %define svn	0
-%define rel	2
+%define rel	1
 %if %svn
-%define release	%mkrel 0.%svn.%rel
+%define release		%mkrel 0.%svn.%rel
+%define distname	%{name}-%{svn}.tar.lzma
+%define dirname		%{name}
 %else
-%define release	%mkrel %rel
+%define release		%mkrel %rel
+%define distname	%{name}-%{version}.tar.gz
+%define dirname		%{name}-%{version}
 %endif
 
-%define major		4
+%define major		5
 %define libname		%mklibname %name %major
 %define develname	%mklibname %name -d
 
 Summary:	User interface library with embedded multimedia
 Name:		pigment
-Version:	0.3.5
+Version:	0.3.7
 Release:	%{release}
-%if %svn
-Source0:	%{name}-%{svn}.tar.lzma
-%else
-Source0:	http://elisa.fluendo.com/static/download/pigment/%{name}-%{version}.tar.gz
-%endif
+Source0:	http://elisa.fluendo.com/static/download/pigment/%{distname}
+# From upstream SVN (rev 1235): fix underlinking (breaks build)
+# - AdamW 2008/07
+Patch0:		pigment-0.3.7-underlink.patch
 License:	LGPLv2+
 Group:		Development/C
 URL:		http://elisa.fluendo.com/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-%if %svn
-BuildRequires:	autoconf
-%endif
 BuildRequires:	libx11-devel
 BuildRequires:	libxrandr-devel
 BuildRequires:	gtk-doc
@@ -85,11 +85,8 @@ graphical API. Pigment is the rendering engine of Elisa, the Fluendo
 Media Center project.
 
 %prep
-%if %svn
-%setup -q -n %{name}
-%else
-%setup -q
-%endif
+%setup -q -n %{dirname}
+%patch0 -p1 -b .underlink
 
 %build
 %if %svn
