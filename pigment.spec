@@ -8,25 +8,22 @@
 %define dirname		%{name}
 %else
 %define release		%mkrel %rel
-%define distname	%{name}-%{version}.tar.gz
+%define distname	%{name}-%{version}.tar.bz2
 %define dirname		%{name}-%{version}
 %endif
 
-%define major		5
+%define major		7
 %define libname		%mklibname %name %major
 %define develname	%mklibname %name -d
 
 Summary:	User interface library with embedded multimedia
 Name:		pigment
-Version:	0.3.7
+Version:	0.3.9
 Release:	%{release}
 Source0:	http://elisa.fluendo.com/static/download/pigment/%{distname}
-# From upstream SVN (rev 1235): fix underlinking (breaks build)
-# - AdamW 2008/07
-Patch0:		pigment-0.3.7-underlink.patch
 License:	LGPLv2+
 Group:		Development/C
-URL:		http://elisa.fluendo.com/
+URL:		https://code.fluendo.com/pigment/trac
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	libx11-devel
 BuildRequires:	libxrandr-devel
@@ -86,7 +83,6 @@ Media Center project.
 
 %prep
 %setup -q -n %{dirname}
-%patch0 -p1 -b .underlink
 
 %build
 %if %svn
@@ -117,8 +113,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %dir %{_libdir}/%{name}-%{fversion}/%{version}
 %{_libdir}/%{name}-%{fversion}/%{version}/*.so
-%dir %{_datadir}/gtk-doc/html/%{name}
-%{_datadir}/gtk-doc/html/%{name}*
+%{_datadir}/gtk-doc/html/%{name}
 
 %files devel
 %defattr(-,root,root)
@@ -135,4 +130,5 @@ rm -rf %{buildroot}
 %attr(644,root,root) %{_libdir}/lib*a
 %{_libdir}/pkgconfig/%{name}-gtk-%{fversion}.pc
 %{_libdir}/pkgconfig/%{name}-%{fversion}.pc
+%{_libdir}/pkgconfig/%{name}-imaging-%{fversion}.pc
 
