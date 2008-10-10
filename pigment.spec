@@ -18,7 +18,7 @@
 
 Summary:	User interface library with embedded multimedia
 Name:		pigment
-Version:	0.3.10
+Version:	0.3.11
 Release:	%{release}
 Source0:	http://elisa.fluendo.com/static/download/pigment/%{distname}
 License:	LGPLv2+
