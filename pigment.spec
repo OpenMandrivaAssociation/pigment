@@ -1,7 +1,7 @@
 %define	fversion	0.3
 
 %define svn	0
-%define rel	2
+%define rel	1
 %if %svn
 %define release		%mkrel 0.%svn.%rel
 %define distname	%{name}-%{svn}.tar.lzma
@@ -18,7 +18,7 @@
 
 Summary:	User interface library with embedded multimedia
 Name:		pigment
-Version:	0.3.11
+Version:	0.3.12
 Release:	%{release}
 Source0:	http://elisa.fluendo.com/static/download/pigment/%{distname}
 License:	LGPLv2+
