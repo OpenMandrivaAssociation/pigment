@@ -12,13 +12,13 @@
 %define dirname		%{name}-%{version}
 %endif
 
-%define major		8
+%define major		9
 %define libname		%mklibname %name %major
 %define develname	%mklibname %name -d
 
 Summary:	User interface library with embedded multimedia
 Name:		pigment
-Version:	0.3.13
+Version:	0.3.14
 Release:	%{release}
 Source0:	http://elisa.fluendo.com/static/download/pigment/%{distname}
 License:	LGPLv2+
@@ -38,10 +38,10 @@ BuildRequires:	pango-devel
 BuildRequires:	mesaglu-devel
 
 %description
-Pigment is a library designed to easily build user interfaces 
-with embedded multimedia. Its design allows to use it on several 
-platforms, thanks to a plugin system allowing to choose the underlying 
-graphical API. Pigment is the rendering engine of Elisa, the Fluendo 
+Pigment is a library designed to easily build user interfaces
+with embedded multimedia. Its design allows to use it on several
+platforms, thanks to a plugin system allowing to choose the underlying
+graphical API. Pigment is the rendering engine of Elisa, the Fluendo
 Media Center project.
 
 %package devel
@@ -50,10 +50,10 @@ Summary: Development headers for Pigment
 Requires: %{name}
 
 %description devel
-Pigment is a library designed to easily build user interfaces 
-with embedded multimedia. Its design allows to use it on several 
-platforms, thanks to a plugin system allowing to choose the underlying 
-graphical API. Pigment is the rendering engine of Elisa, the Fluendo 
+Pigment is a library designed to easily build user interfaces
+with embedded multimedia. Its design allows to use it on several
+platforms, thanks to a plugin system allowing to choose the underlying
+graphical API. Pigment is the rendering engine of Elisa, the Fluendo
 Media Center project.
 
 %package -n %{libname}
@@ -61,10 +61,10 @@ Group: System/Libraries
 Summary: Shared library of Pigment
 
 %description -n %{libname}
-Pigment is a library designed to easily build user interfaces 
-with embedded multimedia. Its design allows to use it on several 
-platforms, thanks to a plugin system allowing to choose the underlying 
-graphical API. Pigment is the rendering engine of Elisa, the Fluendo 
+Pigment is a library designed to easily build user interfaces
+with embedded multimedia. Its design allows to use it on several
+platforms, thanks to a plugin system allowing to choose the underlying
+graphical API. Pigment is the rendering engine of Elisa, the Fluendo
 Media Center project.
 
 %package -n %{develname}
@@ -75,10 +75,10 @@ Provides: lib%{name}-devel = %{version}-%{release}
 Obsoletes: %{mklibname pigment 0 -d}
 
 %description -n %{develname}
-Pigment is a library designed to easily build user interfaces 
-with embedded multimedia. Its design allows to use it on several 
-platforms, thanks to a plugin system allowing to choose the underlying 
-graphical API. Pigment is the rendering engine of Elisa, the Fluendo 
+Pigment is a library designed to easily build user interfaces
+with embedded multimedia. Its design allows to use it on several
+platforms, thanks to a plugin system allowing to choose the underlying
+graphical API. Pigment is the rendering engine of Elisa, the Fluendo
 Media Center project.
 
 %prep
@@ -89,10 +89,10 @@ Media Center project.
 ./autogen.sh
 %else
 # (Anssi 03/2008) drop rpath on x86_64
-autoreconf
+# autoreconf
 %endif
 %configure2_5x --enable-gtk-doc
-make
+%make
 
 %install
 rm -rf %{buildroot}
