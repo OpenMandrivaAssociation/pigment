@@ -12,7 +12,7 @@
 %define dirname		%{name}-%{version}
 %endif
 
-%define major		9
+%define major		10
 %define libname		%mklibname %name %major
 %define develname	%mklibname %name -d
 
