@@ -12,13 +12,13 @@
 %define dirname		%{name}-%{version}
 %endif
 
-%define major		10
+%define major		11
 %define libname		%mklibname %name %major
 %define develname	%mklibname %name -d
 
 Summary:	User interface library with embedded multimedia
 Name:		pigment
-Version:	0.3.16
+Version:	0.3.17
 Release:	%{release}
 Source0:	http://elisa.fluendo.com/static/download/pigment/%{distname}
 License:	LGPLv2+
