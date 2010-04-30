@@ -91,7 +91,7 @@ Media Center project.
 # (Anssi 03/2008) drop rpath on x86_64
 # autoreconf
 %endif
-%configure2_5x --enable-gtk-doc
+%configure2_5x --disable-gtk-doc
 %make
 
 %install
