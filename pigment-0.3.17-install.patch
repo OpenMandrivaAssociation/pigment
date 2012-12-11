@@ -1,0 +1,10 @@
+--- pigment-0.3.17/pgm/Makefile.am~	2009-05-21 01:08:30.000000000 +0800
++++ pigment-0.3.17/pgm/Makefile.am	2012-10-18 11:26:46.420267743 +0800
+@@ -128,7 +128,6 @@
+ libpigment_@PGM_MAJORMINOR@_include_HEADERS = \
+ 	$(source_h) \
+ 	pgmmarshal.h \
+-	pgmenumtypes.h \
+ 	pgmversion.h
+ 
+ EXTRA_DIST = \
