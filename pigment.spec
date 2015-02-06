@@ -6,7 +6,7 @@
 Summary:	User interface library with embedded multimedia
 Name:		pigment
 Version:	0.3.17
-Release:	5
+Release:	6
 License:	LGPLv2+
 Group:		Development/C
 URL:		https://code.fluendo.com/pigment/trac
